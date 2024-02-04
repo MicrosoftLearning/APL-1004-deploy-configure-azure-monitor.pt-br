@@ -8,17 +8,17 @@ lab:
 
 - Criar um ponto de extremidade de coleta de dados
 - Criar uma regra de coleta de dados
-- Adicionar uma coleção de logs do IIS a uma regra de coleta de dados já existente
-- Configure o Monitor da Conexão de Rede para uma máquina virtual IaaS do Linux
+- Adicionar uma coleta de logs do IIS a uma regra de coleta de dados existente
+- Configurar o Monitor da conexão de rede para uma máquina virtual IaaS do Linux
 
 ## Instruções para o exercício
 
 ### Criar um ponto de extremidade de coleta de dados
 
-1. Na barra de pesquisa do Portal do Azure, insira **Monitor** e selecione **Monitor** na lista de resultados.
-1. Na página **Monitor**, em **Configurações**, escolha **Pontos de Extremidade de Coleta de Dados**.
-1. Na página **Pontos de Extremidade de Coleta de Dados**, selecione **Criar**.
-1. Na página Criar Pontos de Extremidade de Coleta de Dados, forneça as seguintes configurações e, em seguida, selecione Revisar + Criar.
+1. Na barra de pesquisa do portal do Azure, digite Monitor e, em seguida, selecione Monitor na lista de resultados.
+1. Na página Monitor, em Configurações, escolha Pontos de Extremidade de coleta de dados.
+1. Na página Pontos de extremidade de coleta de dados, escolha Criar.
+1. Na página Criar ponto de extremidade de coleta de dados, forneça as seguintes configurações e escolha Analisar + Criar.
 
     | Propriedade | Valor    |
     |:---------|:---------|
@@ -27,14 +27,14 @@ lab:
     | Grupo de recursos    | rg-alpha  |
     | Região    | Leste dos EUA  |
 
-5. Revise as configurações e escolha **Criar**.
+5. Analise as configurações e escolha Criar.
 
 ### Criar uma regra de coleta de dados
 
-1. Na barra de pesquisa do Portal do Azure, insira **Monitor** e selecione **Monitor** na lista de resultados.
-1. Na página **Monitor**, em **Configurações**, escolha **Regras de Coleta de Dados**.
-1. Na página **Regras de Coleta de Dados**, selecione **Criar**.
-1. Na página **Criar Regra de Coleta de Dados**, defina as seguintes configurações e selecione **Próximo**.
+1. Na barra de pesquisa do portal do Azure, digite **Monitor** e selecione **Monitor** na lista de resultados.
+1. Na página **Monitor**, em **Configurações**, selecione **Regras de coleta de dados**.
+1. Na página **Regras de coleta de dados**, selecione **Criar**.
+1. Na página **Criar regra de coleta de dados**, defina as seguintes configurações e escolha **Avançar**.
 
     | Propriedade | Valor    |
     |:---------|:---------|
@@ -45,11 +45,11 @@ lab:
     | Tipo de plataforma | Windows  |
     | Ponto de extremidade da coleta de dados  | IaaSVMCollectionEndpoint   |
 
-5. Na página **Recursos**, selecione **Adicionar Recursos**.
-1. Na página **Selecionar um escopo**, marque a caixa de seleção **WS-VM1** e selecione **Aplicar**.
-1. Na página **Criar Regra de Coleta de Dados**, selecione **Próximo**.
-1. Na página **Coletar e Entregar**, selecione **Adicionar fonte de dados**.
-1. Na página **Adicionar fonte de dados**, selecione **Logs de Eventos do Windows**. Na categoria **Aplicativo**, habilite as categorias **Crítico** e **Erro**. Na categoria **Segurança**, selecione a categoria **Falha de Auditoria**. Na categoria **Sistema**, habilite as categorias **Crítico** e **Erro**. 
+5. Na página **Recursos**, selecione **Adicionar recursos**.
+1. Na página **Selecionar um escopo**, habilite a caixa de seleção **WS-VM1** e escolha **Aplicar**.
+1. Na página **Criar regra de coleta de dados**, escolha **Avançar**.
+1. Na página **Coletar e entregar**, selecione **Adicionar fonte de dados**.
+1. Na página **Adicionar fonte de dados**, selecione **Logs de eventos do Windows**. Na categoria Aplicativo, habilite as categorias **Crítico** e **Erro**. Na categoria **Segurança**, selecione a categoria **Falha de auditoria**. Na categoria **Sistema**, habilite as categorias **Crítico** e **Erro**. 
 1. Selecione **Próximo**.
 1. Na página **Destino**, defina as seguintes configurações:
 
@@ -59,18 +59,18 @@ lab:
     | Subscription  | Sua assinatura   |
     | Conta ou namespace  | LogAnalytics1  |
 
-12. Selecione **Adicionar origem de dados**.
-1. Selecione **Revisar + Criar** e, em seguida, **Criar**.
+12. Escolha **Adicionar fonte de dados**.
+1. Selecione **Analisar + Criar** e escolha **Criar**.
 
 
-### Adicionar uma coleção de logs do IIS a uma regra de coleta de dados já existente
+### Adicionar uma coleta de logs do IIS a uma regra de coleta de dados existente
 
-1. Na barra de pesquisa do Portal do Azure, insira **Monitor** e selecione **Monitor** na lista de resultados.
-1. Na página **Monitor**, em **Configurações**, escolha **Regras de Coleta de Dados**.
+1. Na barra de pesquisa do portal do Azure, digite **Monitor** e selecione **Monitor** na lista de resultados.
+1. Na página **Monitor**, em **Configurações**, selecione **Regras de coleta de dados**.
 1. Selecione a regra **WinVMDRC** em rg-alpha.
-1. Em **Configuração**, selecione **Fontes de Dados**.
-1. Na página **Fontes de Dados**, selecione **Adicionar**.
-1. Na página **Adicionar Fonte de Dados**, selecione **Logs do IIS**.
+1. Em **Configuração**, selecione **Fontes de dados**.
+1. Na página **Fontes de dados**, selecione **Adicionar**.
+1. Na página **Adicionar fonte de dados**, selecione **Logs do IIS**.
 1. Selecione **Próximo**.
 1. Na página **Destino**, defina as seguintes configurações:
 
@@ -80,14 +80,14 @@ lab:
     | Subscription  | Sua assinatura   |
     | Conta ou namespace  | LogAnalytics1  |
 
-9. Selecione **Adicionar origem de dados**.
+9. Escolha **Adicionar fonte de dados**.
 
-### Configure o Monitor da Conexão de Rede para uma máquina virtual IaaS do Linux
+### Configurar o Monitor da conexão de rede para uma máquina virtual IaaS do Linux
 
 1. Na barra de pesquisa do portal do Azure, digite **Observador de Rede** e selecione **Observador de Rede** na lista de resultados.
-1. Em **Monitoramento**, selecione **Monitor de Conexão**.
-1. Na página **Monitor de Conexão**, selecione **Criar**.
-1. Na página **Básicos** do assistente **Criar Monitor de Conexão**, forneça as seguintes informações e selecione **Próximo**.
+1. Em **Monitoramento**, escolha **Monitor da Conexão**.
+1. Na página **Monitor da Conexão**, selecione **Criar**.
+1. Na página **Noções básicas** do assistente Criar Monitor da Conexão, forneça as informações a seguir e escolha **Avançar**.
 
     | Propriedade | Valor    |
     |:---------|:---------|
@@ -97,9 +97,9 @@ lab:
     | Workspace | LogAnalytics1  |
 
 5. Na página **Adicionar detalhes do grupo de teste**, digite o nome **LinuxIPTest** e selecione **Adicionar fontes**.
-1. Na página **Adicionar Fontes**, selecione **Pontos de Extremidade do Azure** e defina o tipo como **Máquinas virtuais**. Selecione **Sub-rede** e ative a caixa de seleção **Linux-VM**. Selecione **Adicionar Pontos de Extremidade**.
-1. Selecione **Adicionar Configuração de Teste**. 
-1. Na página **Adicionar Configuração de Teste**, digite o nome **DefaultHTTP** e, em seguida, selecione **Adicionar Configuração de Teste**.
-1. Selecione **Adicionar Destinos**. Selecione **Azure Pontos de Extremidade** e defina o tipo como **Máquinas virtuais**. Selecione **Sub-rede** e ative a caixa de seleção **WS-VM1**. Selecione **Adicionar Pontos de Extremidade**.
-1. Selecione **Adicionar Grupo de Teste**.
-1. Selecione **Revisar e Criar** e, em seguida, **Criar**.
+1. Na página **Adicionar fontes**, selecione **Pontos de extremidade do Azure** e defina o tipo como **Máquinas virtuais**. Selecione **Sub-rede** e habilite a caixa de seleção **Linux-VM**. Clique em **Adicionar pontos de extremidade**.
+1. Selecione **Adicionar configuração de teste**. 
+1. Na página **Adicionar configuração de teste**, digite o nome **DefaultHTTP** e selecione **Adicionar configuração de teste**.
+1. Escolha **Adicionar destinos**. Selecione **Pontos de extremidade do Azure** e defina o tipo como **Máquinas virtuais**. Selecione **Sub-rede** e habilite a caixa de seleção **WS-VM1**. Selecione **Adicionar pontos de extremidade**.
+1. Escolha **Adicionar grupo de teste**.
+1. Selecione **Analisar e criar** e, em seguida, **Criar**.
