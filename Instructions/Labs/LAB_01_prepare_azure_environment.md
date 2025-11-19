@@ -19,8 +19,8 @@ Este conjunto de exercícios de laboratório considera que você tem permissões
 
 Neste exercício, você cria um grupo de segurança do Entra ID.
 
-1. Na barra de pesquisa do portal do Azure, insira Azure Active Directory (ou Entra ID) e Azure Active Directory (ou Entra ID) na lista de resultados.
-1. Na página **Diretório padrão**, selecione **Grupos**.
+1. Na barra de pesquisa do portal do Azure, insira Azure Active Directory (ou ID Entra) na lista de resultados.
+1. Na página **Diretório Padrão**, selecione **Grupos**.
 1. Na página **Grupos**, escolha **Novo grupo**.
 1. Na página **Novo grupo**, forneça os valores na tabela a seguir e escolha **Criar**.
 
@@ -28,8 +28,8 @@ Neste exercício, você cria um grupo de segurança do Entra ID.
     | Propriedade | Valor    |
     |:---------|:---------|
     | Tipo de grupo  | Segurança   |
-    | Nome do grupo  | AppLogExaminers   |
-    | Descrição do grupo  | AppLogExaminers   |
+    | Nome do grupo  | Examinadores de log de aplicativo   |
+    | Descrição do grupo  | Examinadores de log de aplicativo   |
 
 
 ## Implantar e configurar o WS-VM1
@@ -43,10 +43,10 @@ Neste exercício, você implanta e configura uma máquina virtual do Windows Ser
     | Propriedade | Valor    |
     |:---------|:---------|
     | Subscription  | Sua assinatura   |
-    | Grupo de recursos    | rg-alpha  |
+    | Grupo de Recursos    | rg-alpha  |
     | Nome da máquina virtual  | WS-VM1   |
-    | Região    | Leste dos EUA  |
-    | Opções de disponibilidade  | Sem necessidade de redundância de infraestrutura  |
+    | Region    | Leste dos EUA  |
+    | Opções de disponibilidade  | Nenhuma redundância de infraestrutura necessária  |
     | Tipo de segurança | Standard   |
     | Imagem | Datacenter do Windows Server 2022: Azure Edition – x64 Gen 2  |
     | Arquitetura de VMs;   | x64  |
@@ -71,6 +71,7 @@ Neste exercício, você implanta e configura uma máquina virtual do Windows Ser
     | Fonte  | Qualquer  |
     | Intervalos de portas de origem    | *   |
     | Destino  | Qualquer   |
+    | Serviço   | HTTP  |
     | Ação    | Permitir  |
     | Prioridade  | 310   |
     | Nome  | AllowAnyHTTPInbound  |
@@ -84,9 +85,9 @@ Neste exercício, você implanta e configura uma máquina virtual do Windows Ser
 1. No prompt de comando elevado, digite o seguinte comando e pressione **Enter**.
     Install-WindowsFeature Web-Server  -IncludeAllSubFeature -IncludeManagementTools 
 1. Quando a instalação for concluída, execute o seguinte comando e alterne para o diretório raiz do servidor Web.
-    Cd c:\inetpub\wwwroot\
+    cd c:\inetpub\wwwroot\
 1. Execute o comando a seguir.
-    Wget https://raw.githubusercontent.com/Azure-Samples/html-docs-hello-world/master/index.html-OutFile index.html
+    Wget https://raw.githubusercontent.com/Azure-Samples/html-docs-hello-world/master/index.html -OutFile index.html
 
 
 ## Implantar e configurar o LX-VM2
@@ -100,10 +101,10 @@ Neste exercício você vai implantar e configurar uma máquina virtual Linux.
     | Propriedade | Valor    |
     |:---------|:---------|
     | Subscription  | Sua assinatura   |
-    | Grupo de recursos    | rg-alpha  |
+    | Grupo de Recursos    | rg-alpha  |
     | Nome da máquina virtual  | Linux-VM2   |
-    | Região    | Leste dos EUA  |
-    | Opções de disponibilidade  | Sem necessidade de redundância de infraestrutura  |
+    | Region    | Leste dos EUA  |
+    | Opções de disponibilidade  | Nenhuma redundância de infraestrutura necessária  |
     | Tipo de segurança | Standard   |
     | Imagem | Ubuntu Server 20.04 LTs – x64 Gen2  |
     | Arquitetura de VMs;   | x64  |
@@ -111,12 +112,14 @@ Neste exercício você vai implantar e configurar uma máquina virtual Linux.
     | Tipo de autenticação   | Senha  |
     | Nome de Usuário  | Prime   |
     | Senha  | [Selecione uma senha segura exclusiva] P@ssw0rdP@ssw0rd   |
-    | Porta de entrada públicas  | Nenhum   |
+    | Portas de entrada públicas  | Nenhum   |
 
 4. Analise as informações e escolha **Criar**.
 1. Depois que a VM for implantada, abra a página de **Propriedades da VM** e escolha **Extensões + Aplicativos** em **Configurações**.
 1. Escolha **Adicionar** e selecione o **Observador de Rede para Linux**. Selecione **Avançar** e, em seguida, escolha **Analisar e criar**. Escolha **Criar**.
-1. Configure o AzureNetworkWatcherExtension e a extensão OmsAgentForLinux para que sejam atualizados automaticamente.
+
+> [!NOTE]
+> A instalação e a configuração da extensão OmsAgentForLinux serão realizadas no Exercício 2, após a criação do workspace do Log Analytics.
 
 
 ## Implantar um aplicativo Web com um Banco de Dados SQL
@@ -126,23 +129,23 @@ Neste exercício você vai implantar e configurar uma máquina virtual Linux.
 1. Na página do GitHub, escolha **Implantar no Azure**.
 1. Uma nova guia é aberta. Se necessário, entre novamente no Azure com a conta que tem privilégios de Administrador global.
 1. Na página **Básico**, selecione **Editar modelo**.
-1. No editor de modelos, exclua o conteúdo das linhas 158 a 174 inclusive e exclua a "," na linha 157. Selecione **Salvar**.
+1. No editor de modelos, exclua o conteúdo das linhas 158 a 174 inclusive e exclua a "," na linha 157. Escolha **Salvar**.
 1. Na página **Básico**, insira as seguintes informações e escolha **Avançar**.
 
     | Propriedade | Valor    |
     |:---------|:---------|
     | Subscription  | Sua assinatura   |
-    | Grupo de recursos    | rg-alpha  |
-    | Região    | Leste dos EUA  |
+    | Grupo de Recursos    | rg-alpha  |
+    | Region    | Leste dos EUA  |
     | Nome do Sku  | F1  |
     | Capacidade de Sku  | 1   |
     | Logon de Administrador do SQL   | prime  |
     | Senha de Logon de Administrador do SQL  | [Selecione uma senha segura exclusiva] P@ssw0rdP@ssw0rd   |
 
-8. Analise as informações e selecione **Criar**.
-1. Após a conclusão da implantação, selecione **Ir para o grupo de recursos**.
+8. Revise as informações apresentadas e selecione **Criar**.
+1. Após a conclusão da implantação, escolha **Ir para o grupo de recursos**.
 
-## Implantar um aplicativo Web do Linux
+## Implantar um aplicativo web do Linux
 
 1. Verifique se você está conectado ao portal do Azure.
 1. No navegador, abra uma nova guia e acesse https://learn.microsoft.com/en-us/samples/azure/azure-quickstart-templates/webapp-basic-linux/
@@ -152,10 +155,10 @@ Neste exercício você vai implantar e configurar uma máquina virtual Linux.
     | Propriedade | Valor    |
     |:---------|:---------|
     | Subscription  | Sua assinatura   |
-    | Grupo de recursos    | rg-alpha  |
-    | Região    | Leste dos EUA  |
+    | Grupo de Recursos    | rg-alpha  |
+    | Region    | Leste dos EUA  |
     | Nome do aplicativo Web  | AzureLinuxAppWXYZ (atribua um número aleatório aos quatro caracteres finais do nome)  |
     | Sku   | S1   |
-    | Versão do Linux Fx  | php|7.4  |
+    | Versão do Linux Fx  | php|7,4  |
 
 5. Analise as informações e escolha **Criar**.
